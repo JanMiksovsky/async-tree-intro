@@ -1,0 +1,12 @@
+{
+  "name": "@graphorigami/origami-intro-talk",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "@graphorigami/origami": "https://gitpkg.now.sh/GraphOrigami/origami/packages/origami?bcab0790",
+    "marked": "4.3.0"
+  },
+  "scripts": {
+    "start": "ori @serve @watch src, =@debug ."
+  }
+}
