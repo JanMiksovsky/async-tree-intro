@@ -1,7 +1,7 @@
-export default async function display(graph) {
-  // Display each of the values from the graph.
-  for (const key of await graph.keys()) {
-    const value = await graph.get(key);
+// Display the values in a flat dictionary.
+export default async function display(dictionary) {
+  for (const key of await dictionary.keys()) {
+    const value = await dictionary.get(key);
     console.log(`${key}: ${value}`);
   }
 }

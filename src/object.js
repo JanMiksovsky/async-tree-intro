@@ -6,13 +6,17 @@ class ObjectGraph {
   async get(key) {
     let value = this.obj[key];
 
+    // If the key is the empty string, return the graph itself.
     if (value === undefined && key === "") {
       value = this;
     }
 
-    const isPlainObject =
-      value && Object.getPrototypeOf(value) === Object.prototype;
-    return isPlainObject ? new ObjectGraph(value) : value;
+    // Wrap a plain sub-object in a graph.
+    if (value && Object.getPrototypeOf(value) === Object.prototype) {
+      value = new ObjectGraph(value);
+    }
+
+    return value;
   }
 
   async keys() {
