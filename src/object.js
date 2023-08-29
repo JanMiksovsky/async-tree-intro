@@ -4,11 +4,12 @@ class ObjectGraph {
   }
 
   async get(key) {
-    if (key === undefined) {
-      return this;
+    let value = this.obj[key];
+
+    if (value === undefined && key === "") {
+      value = this;
     }
 
-    let value = this.obj[key];
     const isPlainObject =
       value && Object.getPrototypeOf(value) === Object.prototype;
     return isPlainObject ? new ObjectGraph(value) : value;

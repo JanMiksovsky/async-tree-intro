@@ -1,4 +1,4 @@
-export default function (inputGraph) {
+export default function identity(inputGraph) {
   const outputGraph = {
     async get(key) {
       return inputGraph.get(key);

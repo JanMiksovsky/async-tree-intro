@@ -5,7 +5,11 @@ class FunctionGraph {
   }
 
   async get(key) {
-    return key === undefined ? this : this.fn(key);
+    let value = this.fn(key);
+    if (value === undefined && key === "") {
+      value = this;
+    }
+    return value;
   }
 
   async keys() {

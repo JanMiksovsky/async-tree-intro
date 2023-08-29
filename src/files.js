@@ -8,7 +8,7 @@ class FilesGraph {
   }
 
   async get(key) {
-    if (key === undefined) {
+    if (key === "") {
       return this;
     }
 
