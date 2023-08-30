@@ -14,6 +14,10 @@ export default class GoogleDriveGraph {
   }
 
   async get(key) {
+    if (key === "") {
+      return this;
+    }
+
     const items = await this.getItems();
     const item = items[key];
     if (!item) {
