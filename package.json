@@ -4,9 +4,10 @@
   "type": "module",
   "dependencies": {
     "@graphorigami/origami": "https://gitpkg.now.sh/GraphOrigami/origami/packages/origami?bcab0790",
+    "googleapis": "126.0.1",
     "marked": "4.3.0"
   },
   "scripts": {
-    "start": "ori @serve @watch src, =@debug ."
+    "start": "ori @serve"
   }
 }

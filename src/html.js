@@ -3,6 +3,9 @@ import { marked } from "marked";
 export default function html(markdownGraph) {
   const htmlGraph = {
     async get(key) {
+      if (key === "") {
+        return this;
+      }
       const markdownKey = key.replace(/\.html$/, ".md");
       const markdown = await markdownGraph.get(markdownKey);
       if (markdown) {
