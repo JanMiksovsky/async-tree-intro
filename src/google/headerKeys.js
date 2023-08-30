@@ -1,8 +1,8 @@
-import { ExplorableGraph } from "@graphorigami/origami";
+import { GraphHelpers } from "@graphorigami/origami";
 
 export default async function headerKeys(variant) {
-  const graph = await ExplorableGraph.from(variant);
-  const table = await ExplorableGraph.plain(graph);
+  const graph = await GraphHelpers.from(variant);
+  const table = await GraphHelpers.plain(graph);
   const rows = table.slice();
   const header = rows.shift();
   const result = [];
