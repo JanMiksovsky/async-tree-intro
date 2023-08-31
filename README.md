@@ -1,4 +1,6 @@
-# Benefits of async graphs
+# Async graphs — Jan Miksovsky
+
+Benefits:
 
 1. Easy to implement and consume
 1. Reuse tooling

@@ -14,6 +14,7 @@ import thumbnail from "./thumbnail.js";
 
 const files = new FilesGraph(import.meta.url);
 const assets = await files.get("assets");
+
 // const images = await files.get("images");
 const images = await resources.get("images");
 
