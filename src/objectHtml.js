@@ -1,4 +1,4 @@
-import html from "./html.js";
+import htmlGraph from "./htmlGraph.js";
 import object from "./object.js";
 
-export default html(object);
+export default htmlGraph(object);
