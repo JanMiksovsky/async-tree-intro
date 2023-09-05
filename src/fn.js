@@ -5,11 +5,7 @@ class FunctionGraph {
   }
 
   async get(key) {
-    let value = this.fn(key);
-    if (value === undefined && key === "") {
-      value = this;
-    }
-    return value;
+    return this.fn(key);
   }
 
   async keys() {
@@ -18,7 +14,7 @@ class FunctionGraph {
 }
 
 function fn(key) {
-  if (key.endsWith(".md")) {
+  if (key?.endsWith?.(".md")) {
     const name = key.slice(0, -3);
     return `Hello, **${name}**.`;
   }

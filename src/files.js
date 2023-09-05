@@ -8,8 +8,8 @@ class FilesGraph {
   }
 
   async get(key) {
-    if (key === "") {
-      return this;
+    if (typeof key !== "string") {
+      return undefined;
     }
 
     const filePath = path.resolve(this.dirname, key);
