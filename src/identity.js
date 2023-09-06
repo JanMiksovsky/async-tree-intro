@@ -1,13 +1,13 @@
-export default function identity(inputGraph) {
-  const outputGraph = {
+export default function identity(innerGraph) {
+  const outerGraph = {
     async get(key) {
-      return inputGraph.get(key);
+      return innerGraph.get(key);
     },
 
     async keys() {
-      return inputGraph.keys();
+      return innerGraph.keys();
     },
   };
 
-  return outputGraph;
+  return outerGraph;
 }
