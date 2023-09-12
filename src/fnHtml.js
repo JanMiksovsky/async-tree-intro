@@ -1,4 +1,4 @@
-import fn from "./fn.js";
+import markdownGraph from "./fn.js";
 import htmlGraph from "./htmlGraph.js";
 
-export default htmlGraph(fn);
+export default htmlGraph(markdownGraph);

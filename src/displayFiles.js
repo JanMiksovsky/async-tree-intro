@@ -1,4 +1,4 @@
 import display from "./display.js";
-import graph from "./files.js";
+import filesGraph from "./files.js";
 
-await display(graph);
+await display(filesGraph);

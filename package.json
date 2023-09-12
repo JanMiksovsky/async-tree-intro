@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "@graphorigami/origami": "https://gitpkg.now.sh/GraphOrigami/origami/packages/origami?6139070d",
+    "@graphorigami/origami": "0.0.27",
     "googleapis": "126.0.1",
     "marked": "4.3.0"
   },
