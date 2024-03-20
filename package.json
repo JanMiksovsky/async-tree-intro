@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
-    "@graphorigami/origami": "0.0.27",
+    "@weborigami/async-tree": "0.0.45",
     "googleapis": "126.0.1",
-    "marked": "4.3.0"
+    "marked": "12.0.1"
   },
   "scripts": {
     "start": "ori @serve"

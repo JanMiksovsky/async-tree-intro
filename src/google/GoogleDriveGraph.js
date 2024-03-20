@@ -5,7 +5,7 @@ const googleExtensions = {
   "application/vnd.google-apps.spreadsheet": ".gsheet",
 };
 
-export default class GoogleDriveGraph {
+export default class GoogleDriveTree {
   constructor(auth, folderId) {
     this.auth = auth;
     this.service = google.drive({ version: "v3", auth });
@@ -27,7 +27,7 @@ export default class GoogleDriveGraph {
     const googleFileTypes = {
       "application/vnd.google-apps.spreadsheet": gsheet,
       "application/vnd.google-apps.folder": (auth, id) =>
-        new GoogleDriveGraph(auth, id),
+        new GoogleDriveTree(auth, id),
     };
     const loader = googleFileTypes[item.mimeType] || getGoogleDriveFile;
     const value = await loader(this.auth, item.id);

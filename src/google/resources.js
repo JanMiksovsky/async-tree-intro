@@ -1,7 +1,7 @@
-import { FilesGraph } from "@graphorigami/origami";
+import { FileTree } from "@weborigami/origami";
 import gdrive from "./gdrive.js";
 
-const files = new FilesGraph(import.meta.url);
+const files = new FileTree(import.meta.url);
 const credsJson = JSON.parse(await files.get("creds.json"));
 const drive = await gdrive(credsJson);
 

@@ -1,13 +1,13 @@
 import {
-  FilesGraph,
+  FileTree,
   FileTreeTransform,
-  MapValuesGraph,
-} from "@graphorigami/origami";
+  MapValuesTree,
+} from "@weborigami/origami";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-const files = new FilesGraph(dirname);
+const files = new FileTree(dirname);
 const token = String(await files.get(".githubToken"));
 
 export default async function gist(gistId) {
@@ -24,10 +24,10 @@ export default async function gist(gistId) {
   if (response.ok) {
     const { files } = await response.json();
     // Top-level `files` has the actual file content in `content` properties.
-    const graph = new (FileTreeTransform(MapValuesGraph))(files, (file) =>
+    const tree = new (FileTreeTransform(MapValuesTree))(files, (file) =>
       file.get("content")
     );
-    return graph;
+    return tree;
   } else {
     return undefined;
   }

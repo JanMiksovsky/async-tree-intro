@@ -1,15 +1,15 @@
-const indexPage = (teamData, siteName) =>
+export default (teamData) =>
   `<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>${siteName}</title>
+  <title>Our Amazing Team</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header>
     <img class="icon" src="assets/personIcon.svg">
-    <h1>${siteName}</h1>
+    <h1>Our Amazing Team</h1>
   </header>
   <ul class="tileGrid">
 ${tiles(teamData)}  </ul>
@@ -29,5 +29,3 @@ const tiles = (team) =>
   Object.values(team)
     .map((person) => tile(person))
     .join("");
-
-export default indexPage;

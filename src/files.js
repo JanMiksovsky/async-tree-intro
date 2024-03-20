@@ -2,7 +2,7 @@ import * as fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-class FilesGraph {
+class FileTree {
   constructor(dirname) {
     this.dirname = dirname;
   }
@@ -25,7 +25,7 @@ class FilesGraph {
     }
 
     return stats.isDirectory()
-      ? new FilesGraph(filePath) // Return subdirectory as a graph
+      ? new FileTree(filePath) // Return subdirectory as a tree
       : fs.readFile(filePath); // Return file contents
   }
 
@@ -36,4 +36,4 @@ class FilesGraph {
 
 const moduleFolder = path.dirname(fileURLToPath(import.meta.url));
 const markdownFolder = path.resolve(moduleFolder, "markdown");
-export default new FilesGraph(markdownFolder);
+export default new FileTree(markdownFolder);

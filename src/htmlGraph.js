@@ -1,9 +1,9 @@
 import { marked } from "marked";
-import transform from "./transformGraph.js";
+import transform from "./transformTree.js";
 
-export default function htmlGraph(markdownGraph) {
+export default function htmlTree(markdownTree) {
   return transform(
-    markdownGraph,
+    markdownTree,
     (htmlKey) => htmlKey.replace(/\.html$/, ".md"),
     (markdownKey) => markdownKey.replace(/\.md$/, ".html"),
     (markdownValue) => marked(markdownValue.toString())

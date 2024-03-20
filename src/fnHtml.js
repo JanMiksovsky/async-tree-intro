@@ -1,4 +1,4 @@
-import markdownGraph from "./fn.js";
-import htmlGraph from "./htmlGraph.js";
+import markdownTree from "./fn.js";
+import htmlTree from "./htmlTree.js";
 
-export default htmlGraph(markdownGraph);
+export default htmlTree(markdownTree);

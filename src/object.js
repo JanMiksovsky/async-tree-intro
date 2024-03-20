@@ -1,4 +1,4 @@
-class ObjectGraph {
+class ObjectTree {
   constructor(obj) {
     this.obj = obj;
   }
@@ -6,9 +6,9 @@ class ObjectGraph {
   async get(key) {
     let value = this.obj[key];
 
-    // Wrap a plain sub-object in a graph.
+    // Wrap a plain sub-object in a tree.
     if (value && Object.getPrototypeOf(value) === Object.prototype) {
-      value = new ObjectGraph(value);
+      value = new ObjectTree(value);
     }
 
     return value;
@@ -19,7 +19,7 @@ class ObjectGraph {
   }
 }
 
-export default new ObjectGraph({
+export default new ObjectTree({
   "Alice.md": "Hello, **Alice**.",
   "Bob.md": "Hello, **Bob**.",
   "Carol.md": "Hello, **Carol**.",

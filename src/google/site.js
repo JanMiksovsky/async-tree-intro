@@ -1,43 +1,41 @@
 import {
-  FilesGraph,
-  GraphHelpers,
-  MapExtensionsGraph,
-  MapInnerKeysGraph,
-  MapValuesGraph,
-  ObjectGraph,
-} from "@graphorigami/origami";
+  FileTree,
+  MapExtensionsTree,
+  MapInnerKeysTree,
+  MapValuesTree,
+  ObjectTree,
+  TreeHelpers,
+} from "@weborigami/origami";
 import headerKeys from "./headerKeys.js";
 import indexPage from "./indexPage.js";
 import personPage from "./personPage.js";
 import resources from "./resources.js";
 import thumbnail from "./thumbnail.js";
 
-const files = new FilesGraph(import.meta.url);
+const files = new FileTree(import.meta.url);
 const assets = await files.get("assets");
 
 // const images = await files.get("images");
 const images = await resources.get("images");
 
-// const teamGraph = fromYaml(await files.get("teamData.yaml"));
+// const teamTree = fromYaml(await files.get("teamData.yaml"));
 const teamSheet = JSON.parse(await resources.get("Team.gsheet"));
-const teamGraph = await headerKeys(teamSheet);
+const teamTree = await headerKeys(teamSheet);
 
 const siteName = "Our Amazing Team";
-const teamByName = new MapInnerKeysGraph(teamGraph, (value) =>
-  value.get("name")
-);
+const teamByName = new MapInnerKeysTree(teamTree, (value) => value.get("name"));
 
-const indexHtml = indexPage(await GraphHelpers.plain(teamByName), siteName);
-const thumbnails = new MapValuesGraph(images, thumbnail);
-const team = new MapExtensionsGraph(
+const indexHtml = indexPage(await TreeHelpers.plain(teamByName), siteName);
+const thumbnails = new MapValuesTree(images, thumbnail);
+const team = new MapExtensionsTree(
   teamByName,
-  async (person) => personPage(await GraphHelpers.plain(person), siteName),
+  async (person) => personPage(await TreeHelpers.plain(person), siteName),
   {
     extension: "->html",
   }
 );
 
-export default new ObjectGraph({
+export default new ObjectTree({
   assets,
   images,
   "index.html": indexHtml,

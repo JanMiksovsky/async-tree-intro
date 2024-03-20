@@ -1,4 +1,4 @@
-export default (person, siteName) =>
+export default (person) =>
   `<html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,7 +10,7 @@ export default (person, siteName) =>
   <a class="headerLink" href="..">
     <header>
       <img class="icon" src="../assets/personIcon.svg">
-      <h1>${siteName}</h1>
+      <h1>Our Amazing Team</h1>
     </header>
   </a>
   <main class="person">

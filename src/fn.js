@@ -1,4 +1,4 @@
-class FunctionGraph {
+class FunctionTree {
   constructor(fn, domain) {
     this.fn = fn;
     this.domain = domain;
@@ -13,13 +13,9 @@ class FunctionGraph {
   }
 }
 
-function fn(key) {
-  if (key?.endsWith?.(".md")) {
-    const name = key.slice(0, -3);
-    return `Hello, **${name}**.`;
-  }
-}
+const fn = (key) =>
+  key?.endsWith?.(".md") ? `Hello, **${key.slice(0, -3)}**.` : undefined;
 
 const domain = ["Alice.md", "Bob.md", "Carol.md"];
 
-export default new FunctionGraph(fn, domain);
+export default new FunctionTree(fn, domain);

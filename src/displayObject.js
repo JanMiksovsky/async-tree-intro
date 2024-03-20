@@ -1,4 +1,4 @@
 import display from "./display.js";
-import objectGraph from "./object.js";
+import objectTree from "./object.js";
 
-await display(objectGraph);
+await display(objectTree);

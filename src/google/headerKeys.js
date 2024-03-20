@@ -1,8 +1,8 @@
-import { GraphHelpers } from "@graphorigami/origami";
+import { TreeHelpers } from "@weborigami/origami";
 
 export default async function headerKeys(variant) {
-  const graph = await GraphHelpers.from(variant);
-  const table = await GraphHelpers.plain(graph);
+  const tree = await TreeHelpers.from(variant);
+  const table = await TreeHelpers.plain(tree);
   const rows = table.slice();
   const header = rows.shift();
   const result = [];

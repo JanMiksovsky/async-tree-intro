@@ -1,4 +1,4 @@
-import { StringWithGraph } from "@graphorigami/origami";
+import { StringWithTree } from "@weborigami/origami";
 import { google } from "googleapis";
 const sheets = google.sheets("v4");
 
@@ -16,6 +16,6 @@ export default async function sheet(auth, key, range = "Data") {
   }
 
   const text = JSON.stringify(data, null, 2);
-  const result = new StringWithGraph(text, data);
+  const result = new StringWithTree(text, data);
   return result;
 }

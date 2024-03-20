@@ -1,4 +1,4 @@
-# Async graphs
+# Async trees
 
 - Easy to implement and consume
 - Reuse tooling
