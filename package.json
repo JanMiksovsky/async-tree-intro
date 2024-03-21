@@ -5,7 +5,8 @@
   "dependencies": {
     "@weborigami/async-tree": "0.0.46",
     "googleapis": "126.0.1",
-    "marked": "12.0.1"
+    "marked": "12.0.1",
+    "sharp": "0.33.2"
   },
   "scripts": {
     "start": "ori @serve"
