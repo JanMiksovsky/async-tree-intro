@@ -1,8 +1,6 @@
-import {
-  FileTree,
-  FileTreeTransform,
-  MapValuesTree,
-} from "@weborigami/origami";
+import { FileTree, ObjectTree } from "@weborigami/async-tree";
+import { OrigamiTransform, Scope } from "@weborigami/language";
+import { transformObject } from "@weborigami/origami";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -24,9 +22,13 @@ export default async function gist(gistId) {
   if (response.ok) {
     const { files } = await response.json();
     // Top-level `files` has the actual file content in `content` properties.
-    const tree = new (FileTreeTransform(MapValuesTree))(files, (file) =>
-      file.get("content")
-    );
+    const contents = {};
+    for (const [name, file] of Object.entries(files)) {
+      contents[name] = file.content;
+    }
+    // Add scope and file loaders
+    let tree = transformObject(OrigamiTransform, new ObjectTree(contents));
+    tree = Scope.treeWithScope(tree, this);
     return tree;
   } else {
     return undefined;
