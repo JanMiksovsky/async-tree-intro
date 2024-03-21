@@ -1,10 +1,15 @@
-import { FileTree, map, ObjectTree } from "@weborigami/async-tree";
+import {
+  cachedKeyFunctions,
+  FileTree,
+  map,
+  ObjectTree,
+} from "@weborigami/async-tree";
 import path from "node:path";
 import indexPage from "./indexPage.js";
 import personPage from "./personPage.js";
 import thumbnail from "./thumbnail.js";
 
-// Get this folder as a tree.
+// Get this file's containing folder as a tree.
 const dirname = path.dirname(new URL(import.meta.url).pathname);
 const files = new FileTree(dirname);
 
@@ -12,15 +17,12 @@ const files = new FileTree(dirname);
 const images = await files.get("images");
 const teamData = JSON.parse(await files.get("teamData.json"));
 
-// Map the team data to create team pages.
-const mapDataToTeamPages = map({
-  // Convert a team member index to an HTML file name.
-  key: (index) => `${teamData[index].name}.html`,
-  // Convert an HTML file name back to a team member index.
-  inverseKey: (htmlKey) => {
-    const name = htmlKey.slice(0, -5);
-    return teamData.findIndex((person) => person.name === name);
-  },
+// Map array of people data to pages for each person.
+const teamDataToPages = map({
+  // Use the person's name as the page file name. Cache the results in both
+  // directions so we can also work backwards from the file name to the index.
+  ...cachedKeyFunctions((index) => `${teamData[index].name}.html`),
+
   // Map a person's data to an HTML page.
   value: personPage,
 });
@@ -30,6 +32,6 @@ export default new ObjectTree({
   assets: files.get("assets"),
   images,
   "index.html": indexPage(teamData),
-  team: mapDataToTeamPages(teamData),
-  thumbnails: map({ value: thumbnail })(images),
+  team: teamDataToPages(teamData),
+  thumbnails: map(thumbnail)(images),
 });

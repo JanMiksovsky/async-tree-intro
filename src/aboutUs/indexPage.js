@@ -16,6 +16,11 @@ ${tiles(teamData)}  </ul>
 </body>
 </html>`;
 
+const tiles = (team) =>
+  Object.values(team)
+    .map((person) => tile(person))
+    .join("");
+
 const tile = (person) => `    <li class="tile">
       <a href="team/${person.name}.html">
         <img class="avatar" src="thumbnails/${person.image}" alt="${person.name}">
@@ -24,8 +29,3 @@ const tile = (person) => `    <li class="tile">
       </a>
     </li>
 `;
-
-const tiles = (team) =>
-  Object.values(team)
-    .map((person) => tile(person))
-    .join("");
