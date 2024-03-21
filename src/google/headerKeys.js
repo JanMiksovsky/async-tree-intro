@@ -1,8 +1,7 @@
-import { TreeHelpers } from "@weborigami/origami";
+import { Tree } from "@weborigami/async-tree";
 
-export default async function headerKeys(variant) {
-  const tree = await TreeHelpers.from(variant);
-  const table = await TreeHelpers.plain(tree);
+export default async function headerKeys(treelike) {
+  const table = await Tree.plain(treelike);
   const rows = table.slice();
   const header = rows.shift();
   const result = [];

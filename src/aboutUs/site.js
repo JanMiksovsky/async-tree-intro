@@ -8,7 +8,7 @@ import thumbnail from "./thumbnail.js";
 const dirname = path.dirname(new URL(import.meta.url).pathname);
 const files = new FileTree(dirname);
 
-// Get the assets, images, and the team data.
+// Get the images and the team data.
 const images = await files.get("images");
 const teamData = JSON.parse(await files.get("teamData.json"));
 
