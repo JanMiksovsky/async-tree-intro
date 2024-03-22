@@ -1,4 +1,5 @@
 import { cachedKeyFunctions, FileTree, map } from "@weborigami/async-tree";
+import pagefind from "@weborigami/pagefind";
 import path from "node:path";
 import indexPage from "./indexPage.js";
 import personPage from "./personPage.js";
@@ -23,6 +24,8 @@ export default {
   assets: files.get("assets"),
   images,
   "index.html": indexPage(teamData),
+  pagefind: pagefind({ team }),
+  "search.html": files.get("search.html"),
   team,
   thumbnails: map(thumbnail)(images),
 };
