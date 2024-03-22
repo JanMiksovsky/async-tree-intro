@@ -24,11 +24,15 @@ const indexable = {
   team,
 };
 
+let indexPromise;
+
 // Export the root of the site.
 export default {
   assets: files.get("assets"),
   images,
-  pagefind: pagefind(indexable),
+  get pagefind() {
+    return (indexPromise ??= pagefind(indexable));
+  },
   "search.html": files.get("search.html"),
   thumbnails: map(thumbnail)(images),
   ...indexable,
