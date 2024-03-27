@@ -34,6 +34,5 @@ class FileTree {
   }
 }
 
-const moduleFolder = path.dirname(fileURLToPath(import.meta.url));
-const markdownFolder = path.resolve(moduleFolder, "markdown");
-export default new FileTree(markdownFolder);
+const markdownPath = fileURLToPath(new URL("markdown", import.meta.url));
+export default new FileTree(markdownPath);

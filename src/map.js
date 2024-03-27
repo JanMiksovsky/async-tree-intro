@@ -1,4 +1,4 @@
-export default function transformTree(
+export default function map(
   innerTree,
   outerKeyToInnerKey,
   innerKeyToOuterKey,
@@ -18,7 +18,7 @@ export default function transformTree(
             typeof innerValue.get === "function" &&
             typeof innerValue.keys === "function";
           const outerValue = isDictionary
-            ? transformTree(
+            ? map(
                 innerValue,
                 outerKeyToInnerKey,
                 innerKeyToOuterKey,
