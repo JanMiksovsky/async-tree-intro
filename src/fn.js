@@ -13,6 +13,7 @@ class FunctionTree {
   }
 }
 
+// For a key like `name.md`, return `Hello, **name**.`.
 const fn = (key) =>
   key?.endsWith?.(".md") ? `Hello, **${key.slice(0, -3)}**.` : undefined;
 

@@ -1,0 +1,10 @@
+Alice.html: |
+  <p>Hello, <strong>Alice</strong>.</p>
+Bob.html: |
+  <html>
+    <p>Hello, <strong>Bob</strong>.</p>
+  </html>
+Carol.html: |
+  <html>
+    <p>Hello, <strong>Carol</strong>.</p>
+  </html>

@@ -1,4 +1,4 @@
-import { cachedKeyFunctions, FileTree, map } from "@weborigami/async-tree";
+import { FileTree, map } from "@weborigami/async-tree";
 import path from "node:path";
 import indexPage from "./indexPage.js";
 import personPage from "./personPage.js";
@@ -14,7 +14,9 @@ const teamData = JSON.parse(await files.get("teamData.json"));
 
 // Map array of people data to pages for each person.
 const team = map({
-  ...cachedKeyFunctions((index) => `${teamData[index].name}.html`),
+  key: (index) => `${teamData[index].name}.html`,
+  inverseKey: (key) =>
+    teamData.findIndex((person) => person.name === key.slice(0, -5)),
   value: personPage,
 })(teamData);
 
