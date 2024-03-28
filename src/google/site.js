@@ -1,4 +1,4 @@
-import { cachedKeyFunctions, FileTree, map } from "@weborigami/async-tree";
+import { FileTree, map } from "@weborigami/async-tree";
 import path from "node:path";
 import folder from "./folder.js";
 import headerKeys from "./headerKeys.js";
@@ -15,19 +15,19 @@ const images = await folder.get("images");
 const teamSheet = JSON.parse(await folder.get("Team.gsheet"));
 const teamData = await headerKeys(teamSheet);
 
+// Map array of people data to pages for each person.
+const team = map({
+  key: (index) => `${teamData[index].name}.html`,
+  inverseKey: (key) =>
+    teamData.findIndex((person) => person.name === key.slice(0, -5)),
+  value: personPage,
+})(teamData);
+
 // Export the root of the site.
 export default {
   assets: files.get("assets"),
-
   images,
-
   "index.html": indexPage(teamData),
-
-  // Map array of people data to pages for each person.
-  team: map({
-    ...cachedKeyFunctions((index) => `${teamData[index].name}.html`),
-    value: personPage,
-  })(teamData),
-
+  team,
   thumbnails: map(thumbnail)(images),
 };

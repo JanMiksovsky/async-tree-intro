@@ -11,6 +11,6 @@
     "sharp": "0.33.2"
   },
   "scripts": {
-    "start": "ori @serve"
+    "start": "ori @serve @debug ."
   }
 }
