@@ -1,5 +1,7 @@
 Alice.html: |
-  <p>Hello, <strong>Alice</strong>.</p>
+  <html>
+    <p>Hello, <strong>Alice</strong>.</p>
+  </html>
 Bob.html: |
   <html>
     <p>Hello, <strong>Bob</strong>.</p>
